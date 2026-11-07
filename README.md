@@ -122,7 +122,11 @@ footer {
 
 </div>
 
-<div class="cart" id="cart">
+<br>
+<a href="https://wa.me/923214684901"
+target="_blank">
+<button>Order on WhatsApp 📱</button>
+</a>
 <h2>🛒 My Shopping Cart</h2>
 <p id="items">Your cart is empty.</p>
 <button onclick="orderNow()">Order On WhatsApp</button>
