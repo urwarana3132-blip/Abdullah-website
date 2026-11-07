@@ -1,87 +1,165 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Abdullah Egg Store</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdullah Egg Store</title>
 
-    <style>
-        body {
-            background-color: lightyellow;
-            font-family: Arial;
-            text-align: center;
-            margin: 0;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f5f5f5;
+    text-align: center;
+}
 
-        header {
-            background-color: darkgreen;
-            color: white;
-            padding: 25px;
-        }
+header {
+    background: #142d20;
+    color: white;
+    padding: 25px;
+}
 
-        .product {
-            background-color: white;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 12px;
-        }
+nav {
+    background: #e6ad20;
+    padding: 15px;
+}
 
-        button {
-            background-color: green;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            font-size: 17px;
-        }
+nav a {
+    color: black;
+    margin: 12px;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        footer {
-            background-color: darkgreen;
-            color: white;
-            padding: 20px;
-        }
-    </style>
+.hero {
+    padding: 40px;
+    background: #fff1c9;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    width: 250px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.egg {
+    font-size: 70px;
+}
+
+button {
+    background: #142d20;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+}
+
+.cart {
+    background: white;
+    margin: 20px;
+    padding: 20px;
+}
+
+footer {
+    background: #142d20;
+    color: white;
+    padding: 20px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>🥚 Abdullah Egg Store 🥚</h1>
-    <h2>Fresh Eggs Available</h2>
-    <p>Fresh Eggs at Best Prices!</p>
+<h1>🥚 Abdullah Egg Store</h1>
+<p>Fresh Eggs, Best Quality!</p>
 </header>
 
-<div class="product">
-    <h2>Our Products</h2>
+<nav>
+<a href="#home">Home</a>
+<a href="#products">Products</a>
+<a href="#cart">My Cart</a>
+</nav>
 
-    <h3>Farm Fresh Eggs 🥚</h3>
-    <p> 12 eggs desi Price: Rs. 600</p>
+<section class="hero" id="home">
+<h2>Welcome To Abdullah Egg Store</h2>
+<p>Fresh Eggs Available Here!</p>
+</section>
 
-    <button onclick="orderNow()">Order Now</button>
+<h2 id="products">Our Products 🥚</h2>
+
+<div class="products">
+
+<div class="card">
+<div class="egg">🥚</div>
+<h3>Farm Fresh Eggs</h3>
+<p>Price on Request</p>
+<button onclick="addCart('Farm Fresh Eggs')">Add To Cart</button>
 </div>
 
-<div>
-    <h2>Delivery Areas</h2>
-    <p>lahore</p>
-    <p>sheikhupura</p>
+<div class="card">
+<div class="egg">🐣</div>
+<h3>Desi Eggs</h3>
+<p>Price on Request</p>
+<button onclick="addCart('Desi Eggs')">Add To Cart</button>
 </div>
 
-<div>
-    <h2>Customer Reviews</h2>
-    <p>Fresh Eggs and Best Quality!</p>
+<div class="card">
+<div class="egg">🥚</div>
+<h3>White Eggs</h3>
+<p>Price on Request</p>
+<button onclick="addCart('White Eggs')">Add To Cart</button>
 </div>
 
-<div>
-    <h2>Contact Us</h2>
-    <p>Phone: 03214684901</p>
+</div>
+
+<div class="cart" id="cart">
+<h2>🛒 My Shopping Cart</h2>
+<p id="items">Your cart is empty.</p>
+<button onclick="orderNow()">Order On WhatsApp</button>
 </div>
 
 <footer>
-    <p>© 2026 Abdullah Egg Store</p>
+<h3>Abdullah Egg Store</h3>
+<p>Thank You For Visiting!</p>
+<p>WhatsApp: 923214684901</p>
 </footer>
 
 <script>
-function orderNow() {
-    alert("Welcome to Abdullah Egg Store! Contact us to order.");
+
+let cart = [];
+
+function addCart(product) {
+cart.push(product);
+
+document.getElementById("items").innerHTML =
+cart.map(item => "🥚 " + item).join("<br>");
+
+alert("Product Added To Cart!");
 }
+
+function orderNow() {
+if (cart.length === 0) {
+alert("Please Add Products First!");
+return;
+}
+
+let message = "Hello Abdullah Egg Store! I want to order:\n" + cart.join("\n");
+
+let phone = "923214684901";
+
+window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(message), "_blank");
+}
+
 </script>
 
 </body>
